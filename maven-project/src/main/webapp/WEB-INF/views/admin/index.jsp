@@ -4,8 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>科技项目评估系统</title>
-
+		<title>管理员界面</title>
 		<link rel='stylesheet'href='/project-evaluation/resources/easyui/1.4/themes/metro/easyui.css' />
 		<link rel='stylesheet' 	href='/project-evaluation/resources/easyui/1.4/themes/icon.css' />
 	    <link rel='stylesheet' 	href='/project-evaluation/resources/easyui/1.4/themes/color.css' />
@@ -18,7 +17,7 @@
 	<body>
 		<div id='main' class='easyui-layout' style='width:100%;height:300px;'>
 		<div region='north'  split='true' collapsible='false' style='width:300px;height:100px;padding:10px;'>
-			<h3>网站主页</h3>
+			<a href="/project-evaluation/j_spring_security_logout">退出登录</a>
 		</div>
 		<div region='west' title='navigation' split='true' style='width:300px;height:100px'>
 			<div id='nav' class='easyui-accordion' fit='true'>
