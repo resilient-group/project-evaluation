@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false"%> <!-- el表达式 -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -56,6 +58,11 @@
 		</div>
 		<div region='center' title='center' split='true' style='width:300px;height:150px'>
 			<h4>网站正在建设中，请耐心等待......</h4>
+			<h4>所有的新闻信息</h4>
+			<c:forEach var="news" items="${allNews }">
+				<c:out value="${news.author }"></c:out>
+			</c:forEach>
+			
 		</div>
 		<div region='south' split='true' style='padding:10px;margin:0; height:50px;'>
 			<div>
