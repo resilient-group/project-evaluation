@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		<!--namespace指向该sql mapper对应的接口-->
+<mapper namespace="com.greatdreams.projectevaluation.persistence.UserMapper">
+	<!-- 为了返回list 类型而定义的returnMap -->
+	<resultMap id="userResultMap" type="user">
+		<id property="id" column="id" />
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+	</resultMap>
+		<!--select all user -->
+	<select id="selectAllUser" 	resultMap="userResultMap">
+		select * from user;
+	</select>
+		<!--select user by Id-->
+	<select id="selecUsertById" parameterType="int" resultMap="userResultMap">
+		select * from user where id=#{id};
+	</select>
+		<!--select passwore by name -->
+	<select id="selectPasswordByName" parameterType="String" resultMap="userResultMap">
+		select password from user where name=#{name};
+	</select>
+	
+		<!--delete user by Id-->
+	<delete id="deleteUserById" parameterType="int">
+		delete from user where id=#{id};
+	</delete>
+	
+		<!-- insert user 利用id自增的特性-->
+	<insert id="insertUser" parameterType="User">
+		insert into user(id ,name,password) values(#{id},#{name},#{password});
+	</insert>
+		<!-- update user -->
+	<update id="updateUser" parameterType="User">
+		update user set name=#{name},password=#{password} where id=#{id};
+	</update>
+</mapper>
+
+

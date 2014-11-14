@@ -163,7 +163,14 @@
 			<artifactId>tiles-autotag-core</artifactId>
 			<version>1.1.0</version>
 		</dependency>
-<!-- end for jsp tag -->		
+<!-- end for jsp tag -->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+		</dependency>
+		
 	</dependencies>
 
 	<repositories>

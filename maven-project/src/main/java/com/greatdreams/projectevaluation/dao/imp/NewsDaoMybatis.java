@@ -30,13 +30,15 @@ public class NewsDaoMybatis implements NewsDao {
 
 	@Override
 	public News selectNewsById(int id) {
-		return null;
+		News news = newsMapper.selectNewsById(id);
+		return news;
 	}
 
 	@Override
 	public Set<News> selectNewsByTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
+		Set<News> news = new HashSet<News>();
+		news = newsMapper.selectNewsByTitle(title);
+		return news;
 	}
 
 	@Override

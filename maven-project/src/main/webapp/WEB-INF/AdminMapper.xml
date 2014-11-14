@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		<!--namespace指向该sql mapper对应的接口-->
+<mapper namespace="com.greatdreams.projectevaluation.persistence.AdminMapper">
+	<!-- 为了返回list 类型而定义的returnMap -->
+	<resultMap id="adminResultMap" type="admin">
+		<id property="id" column="id" />
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+	</resultMap>
+		<!--select all admin -->
+	<select id="selectAllAdmin" resultMap="adminResultMap">
+		select * from admin
+	</select>
+		<!--select admin by Id-->
+	<select id="selecAdmintById" parameterType="int" resultMap="adminResultMap">
+		select * from admin where id=#{id}
+	</select>
+		<!--select passwore by name -->
+	<select id="selectPasswordByName" parameterType="String" resultType="String">
+		select password from admin where name=#{name}
+	</select>
+	
+		<!--delete admin by Id-->
+	<delete id="deleteAdminById" parameterType="int">
+		delete from admin where id=#{id}
+	</delete>
+	
+		<!-- insert admin 利用id自增的特性-->
+	<insert id="insertAdmin" parameterType="Admin">
+		insert into admin(id ,name,password) values(#{id},#{name},#{password})
+	</insert>
+		<!-- update admin -->
+	<update id="updateAdmin" parameterType="Admin">
+		update admin set name=#{name},password=#{password} where id=#{id}
+	</update>
+</mapper>
+
+

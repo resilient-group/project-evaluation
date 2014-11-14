@@ -16,15 +16,25 @@
         <intercept-url pattern="/admin/*" access="ROLE_ADMIN"  />
         <form-login login-page='/login' authentication-failure-url='/login?error' />
     </http>
-                
-        <authentication-manager>
-            <authentication-provider>
-                <user-service>
-                    <user authorities="ROLE_ADMIN" name="admin" password="admin" />
-                    <user authorities="ROLE_USER" name="test" password="test" />
-                    <user authorities="ROLE_USER" name="test1" password="test1" />
-                    <user authorities="ROLE_GUEST" name="guest" password="guest" />
-                </user-service>
-            </authentication-provider>            
-        </authentication-manager>
+    
+<!--?????-->
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="adminAuthentication"/>
+	</authentication-manager>
+<!-- 从数据库中认证 -->
+   <beans:import resource="project-evaluation-security-servlet-jdbc.xml"/>
+   
+   
+   <!--  
+   <authentication-manager>
+        <authentication-provider>
+        <user-service>
+              <user authorities="ROLE_ADMIN" name="admin" password="admin" />
+              <user authorities="ROLE_USER" name="test" password="test" />
+              <user authorities="ROLE_USER" name="test1" password="test1" />
+              <user authorities="ROLE_GUEST" name="guest" password="guest" />
+        </user-service>
+        </authentication-provider>            
+   </authentication-manager>
+     -->
 </beans:beans>
