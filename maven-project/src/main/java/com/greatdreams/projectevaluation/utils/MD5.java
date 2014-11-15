@@ -75,6 +75,7 @@ public class MD5 {
             int times) {  
         return getMD5ofStr(inputStr, times).equals(MD5Code);  
     }  
+    
 	public static void main(String[] args){
 		//测试byte
 		byte b = -5;

@@ -18,14 +18,16 @@
     </http>
     
 <!--?????-->
+	<!--
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider user-service-ref="adminAuthentication"/>
 	</authentication-manager>
+	-->
 <!-- 从数据库中认证 -->
-   <beans:import resource="project-evaluation-security-servlet-jdbc.xml"/>
+   <!-- <beans:import resource="project-evaluation-security-servlet-jdbc.xml"/>-->
    
    
-   <!--  
+    
    <authentication-manager>
         <authentication-provider>
         <user-service>
@@ -36,5 +38,5 @@
         </user-service>
         </authentication-provider>            
    </authentication-manager>
-     -->
+     
 </beans:beans>

@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>用户登录界面</title>
+		<title>管理员界面</title>
 		<link rel='stylesheet'href='/project-evaluation/resources/easyui/1.4/themes/metro/easyui.css' />
 		<link rel='stylesheet' 	href='/project-evaluation/resources/easyui/1.4/themes/icon.css' />
 	    <link rel='stylesheet' 	href='/project-evaluation/resources/easyui/1.4/themes/color.css' />
@@ -17,7 +17,7 @@
 	<body>
 		<div id='main' class='easyui-layout' style='width:100%;height:300px;'>
 		<div region='north'  split='true' collapsible='false' style='width:300px;height:100px;padding:10px;'>
-				<h2>用户登录界面</h2>
+			<a  class="easyui-linkbutton" href="/project-evaluation/j_spring_security_logout">退出登录</a>
 		</div>
 		<div region='west' title='navigation' split='true' style='width:300px;height:100px'>
 			<div id='nav' class='easyui-accordion' fit='true'>
@@ -54,21 +54,11 @@
 			</div>
 		</div>
 		<div region='center' title='center' split='true' style='width:300px;height:150px'>
-			<form action="/project-evaluation/j_spring_security_check" method='post'>
-				<div class="error-msg">
-					<% 
-						String error = request.getParameter("error");
-						if ( error != null)
-							out.println(error);
-					%>
-				</div>
-				<br/>
-				用户名: <input class='easyui-textbox' type='text' name='j_username'/> <br/> <br/>
-				密&nbsp;&nbsp;码 : <input class='easyui-textbox' type='password' name='j_password'/> <br/><br/>
+		
+			输入要查询的用户名：<input class='easyui-textbox' type='text' id='j_username'/> <br/> <br/>
+			<input  class="easyui-linkbutton" type='submit' value="确定" id="j_start"/><br/> <br/>
+			<div id="j_result" value="用户信息"> </div>
 			
-				<input  class="easyui-linkbutton" type='submit' value="登录"/>
-				<input  class="easyui-linkbutton" type='submit' value="注册"/>
-			</form>
 		</div>
 		<div region='south' split='true' style='padding:10px;margin:0; height:50px;'>
 			<div>
@@ -84,5 +74,21 @@
 		var browser_width = $(window).width();
 		
 		$('#main').css('width',browser_width).css('height',browser_height);
+		$(document).ready(function(){
+			$("#j_start").click(function(){
+				var name = $("#j_username").val();
+				//alert(name);
+				$.ajax({
+					url:"/project-evaluation/admin/getAdmin/jack",
+					type:"get",
+					//contentType:"application/json",//发送请求的类型
+					//dataType:"json,text/html",//接受的数据类型
+					success:function(data){
+						//alert(data);
+						$("#j_result").append(data.password);
+					}
+				});
+			})
+		})
 	</script>
 </html>
